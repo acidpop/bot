@@ -1,0 +1,17 @@
+Acidpop Telegram Basic BOT Help
+
+사용방법 : Command [Option]
+
+Command List
+	사진
+		- 라즈베리파이 카메라로 사진 촬영 후 전송
+	날씨 <동네>
+		- 동네 예보 조회
+	토렌트 <키워드>
+		- 토렌트 검색 후 검색 된 내용 출력
+	다운 <Index>
+		- 토렌트 명령어로 검색된 목록 중 Index 에 해당되는 토렌트를 다운로드한다
+	목록
+		- 검색된 토렌트 목록을 다시 출력한다
+	wol <Index>
+		- 등록된 WOL 시스템 중 Index 에 해당되는 시스템에 WOL 패킷을 전송한다
