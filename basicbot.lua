@@ -31,7 +31,8 @@ require( "bot/webapi" )      -- 날씨 정보등 web에서 정보를 가져오�
 require( "bot/raspi" )       -- 라즈베리파이 전용 스크립트
 require( "bot/recv_file" )   -- Telegram CLI가 수신 받는 '파일'을 처리 하는 스크립트
 require( "bot/torrent" )     -- Torrent 관련 기능 스크립트
-
+require( "bot/wol" )         -- WOL 관련 기능 스크립트
+require ( "bot/resistorcalc" ) -- 저항 띄 색깔 계산기
 
 function DefaultMessage(user_id, cmd)
     local msg = '[' .. cmd .. '] 등록 되지 않은 키워드입니다, help 를 입력하세요'
@@ -53,6 +54,8 @@ function msg_processing(user_id, cmd, arg)
     elseif ( cmd == "다운" )        then    DownloadTorrent(user_id, arg)     -- 검색된 토렌트 중 원하는 Index 번호 토렌트 다운로드
     elseif ( cmd == "목록" )        then    SendTorrentSearchList(user_id)    -- 검색된 토렌트 목록을 다시 출력한다
     elseif ( cmd == "wol" )         then    WakeOnLan(user_id, arg)           -- WOL 요청
+    -- 저항값 계산기
+    elseif ( cmd == "저항" )         then    CalcResistorColor(user_id, arg)
     elseif ( cmd == 'help' )        then    SendHelp(user_id)                 -- 사용 방법 Text 파일 전송
     else                                    DefaultMessage(user_id, cmd)      -- BOT의 기본 메시지
     end
