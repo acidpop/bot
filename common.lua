@@ -86,33 +86,28 @@ end
 string.split = function(str, delim, limit)
     local t = {}
     local tt = {}
-    local s = str
-    local dm = delim
-    local limit_t = limit
     local ck = false or limit
-    str = nil
-    delim = nil
-    limit = nil
+    
     while true do
-        if s == nil then break end
-        local fn = function(t, s, delim)
-        local idx = select(2, string.find(s, delim))
+        if str == nil then break end
+        local fn = function(t, str, delim)
+        local idx = select(2, string.find(str, delim))
     
         if idx == nil then
-            table.insert(t, string.sub(s, 0))
+            table.insert(t, string.sub(str, 0))
             return nil
         else
-            table.insert(t, string.sub(s, 0, idx - 1))
-            return string.sub(s, idx + 1)
+            table.insert(t, string.sub(str, 0, idx - 1))
+            return string.sub(str, idx + 1)
         end 
     end
-    s = fn(t, s, dm);
+    str = fn(t, str, delim);
     end
     if not ck then return t end
     
-    if limit_t > table.maxn(t) then print("테이블보다 정한 길이가 큽니다.") return t
+    if limit > table.maxn(t) then print("테이블보다 정한 길이가 큽니다.") return t
     else
-        for i = 1, limit_t do
+        for i = 1, limit do
             table.insert(tt, t[i])
         end
         
