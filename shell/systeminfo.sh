@@ -28,7 +28,7 @@ CPUTEMP=`vcgencmd measure_temp | cut -d"=" -f2`
 echo "CPU temp   : $CPUTEMP" >> $RESULTPATH
 
 # Memory Info
-MEMORY_FREE=`free -m | awk 'NR==2{printf "%sMB/%sMB (%.2f%%)\n", $3,$2,$3*100/$2 }'`
+MEMORY_FREE=`free -m | awk 'NR==2{printf "%sMB/%sMB (%.2f%%)\n", $3,$2,($3-$7)*100/$2 }'`
 echo "Memory Use : "$MEMORY_FREE >> $RESULTPATH
 
 # Disk Info
