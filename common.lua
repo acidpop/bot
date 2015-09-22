@@ -43,7 +43,9 @@ function vardump(value, depth, key)
     end
 end
 
-
+function cr_lines(s)
+    return s:gsub('\r\n?', '\n'):gmatch('(.-)\n')
+end
 
 -- Full Path 를 path, filename, extension 3종류로 나누는 기능
 function splitfilename(strfilename)
@@ -134,6 +136,7 @@ end
 
 
 function ExecuteCommand(command)
+	print("Execute Command : " .. command)
     local handle = io.popen(command)
     local result = handle:read("*a")
     handle:close()
