@@ -9,6 +9,9 @@ You need first rename Directory
 	mv acidpop_tgbot/  bot/
 
 
+# 2015/09/22
+ - Shell Mode 추가
+
 # 2015/09/10
  - 라즈베리파이 시스템 상태 체크 기능 중 메모리 사용량 계산 부분 수정
 
