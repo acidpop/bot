@@ -8,6 +8,8 @@ You need first rename Directory
 
 	mv acidpop_tgbot/  bot/
 
+# 2015/09/24
+ - Shell Mode 에서 shell_path 정보를 삭제 하는 버그 수정
 
 # 2015/09/22
  - Shell Mode 추가
