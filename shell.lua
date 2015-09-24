@@ -1,6 +1,6 @@
 
 
-shell_path = ""
+shellmode_path = ""
 
 
 function ShellMode(user_id, cmd, arg)
@@ -17,16 +17,16 @@ function ShellMode(user_id, cmd, arg)
 	end
 
 
-	print("Shell Path : " .. shell_path)
-	ExecuteCommand("cd " .. shell_path)
+	print("Shell Path : " .. shellmode_path)
+	ExecuteCommand("cd " .. shellmode_path)
 
-	shell_path = string.gsub(shell_path, "\n", "") 
+	shellmode_path = string.gsub(shellmode_path, "\n", "") 
 
-	result = ExecuteCommand("cd " .. shell_path .. ";" .. cmd_arg)
+	result = ExecuteCommand("cd " .. shellmode_path .. ";" .. cmd_arg)
 	print("cmd : " .. cmd .. " result : " .. result)
 	if( cmd == "cd" ) then
-		shell_path = ExecuteCommand("cd " .. shell_path .. ";" .. cmd_arg .. ";pwd")
-		print("Current PATH pwd : " .. shell_path)
+		shellmode_path = ExecuteCommand("cd " .. shellmode_path .. ";" .. cmd_arg .. ";pwd")
+		print("Current PATH pwd : " .. shellmode_path)
 	end
 
 	send_msg(user_id, result, ok_cb, false)
