@@ -8,6 +8,9 @@ You need first rename Directory
 
 	mv acidpop_tgbot/  bot/
 
+# 2015/10/07
+ - 날씨 조회 API 스크립트에서 동네 이름을 입력하지 않으면 스크립트 오류가 나는 문제 수정
+
 # 2015/09/24
  - Shell Mode 에서 shell_path 정보를 삭제 하는 버그 수정
 
