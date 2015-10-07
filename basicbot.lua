@@ -7,7 +7,7 @@ Smart Telegram bot Project (Basic Version)
 
 
 -- 인증된 사용자만 BOT을 이용하게 하기 위해 폰 번호를 배열로 등록해둔다.
-auth_phone  = { ["821012341234"] = true, 
+auth_phone  = { ["821051812816"] = true, 
                 ["821011112222"] = true,
                 ["801098765432"] = true }
 
@@ -19,6 +19,9 @@ auth_phone  = { ["821012341234"] = true }
 
 -- 로그인 한 ID를 저장하는 변수
 our_id = 0
+
+-- Shell Mode FLAG
+shell_flag = 0
 
 bot_path        = "/home/pi/tg/bot/"
 shell_path      = "/home/pi/tg/bot/shell/"
@@ -32,7 +35,8 @@ require( "bot/raspi" )       -- 라즈베리파이 전용 스크립트
 require( "bot/recv_file" )   -- Telegram CLI가 수신 받는 '파일'을 처리 하는 스크립트
 require( "bot/torrent" )     -- Torrent 관련 기능 스크립트
 require( "bot/wol" )         -- WOL 관련 기능 스크립트
-require ( "bot/resistorcalc" ) -- 저항 띄 색깔 계산기
+require( "bot/resistorcalc" ) -- 저항 띄 색깔 계산기
+require( "bot/shell" )			-- Shell Mode 스크립트
 
 function DefaultMessage(user_id, cmd)
     local msg = '[' .. cmd .. '] 등록 되지 않은 키워드입니다, help 를 입력하세요'
@@ -56,6 +60,9 @@ function msg_processing(user_id, cmd, arg)
     elseif ( cmd == "wol" )         then    WakeOnLan(user_id, arg)           -- WOL 요청
     -- 저항값 계산기
     elseif ( cmd == "저항" )         then    CalcResistorColor(user_id, arg)
+	elseif ( cmd == "쉘모드" )		then	shell_flag = 1; send_msg(user_id, "쉘모드 활성화", ok_cb, false)
+	elseif ( cmd == "쉘모드종료" )	then	shell_flag = 0; send_msg(user_id, "쉘모드 비활성화", ok_cb, false)
+	elseif ( shell_flag == 1 )		then	print("Shell Mode")
     elseif ( cmd == 'help' )        then    SendHelp(user_id)                 -- 사용 방법 Text 파일 전송
     else                                    DefaultMessage(user_id, cmd)      -- BOT의 기본 메시지
     end
@@ -64,6 +71,11 @@ function msg_processing(user_id, cmd, arg)
     if ( string.sub(cmd, 0, 8) == "magnet:?" ) then
         AddMagnetLink(user_id, cmd)
     end
+
+	if ( shell_flag == 1 ) then
+		print("shell flag is true")
+		ShellMode(user_id, cmd, arg)
+	end
 
 end
 
@@ -95,7 +107,6 @@ function on_msg_receive (msg)
         return
     end
 
-
     -- 수신 받은 메시지를 띄어쓰기를 기준으로 Command 와 Argument로 나눈다.
     -- ex : search arg1 text 123 => cmd = "search", arg = "arg1 text 123"
     local cmd, arg  = split_command(msg.text)
@@ -122,6 +133,7 @@ function on_msg_receive (msg)
 
     -- 읽은 메시지로 표시
     mark_read(user_id, ok_cb, false)
+
 
     -- 메시지를 구분하는 함수, 이곳에서 command 를 인식하여 각각 처리한다
     msg_processing(user_id, cmd, arg)
