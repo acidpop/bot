@@ -3,7 +3,7 @@
 #usage) systeminfo.sh /home/pi/tg/bot/tmp/sysinfo.txt
 # 인자 값으로 출력 내용이 저장될 파일 경로를 지정
 
-# measure_clock   arm     ARM 프로세서의 클록 속도
+# measure_clock   arm     ARM 프로세서의 클럭 속도
 # measure_clock   core    코어 주파수(Hz)
 # measure_temp    없음    코어 온도
 # measure_volts   없음    시스템 전압
@@ -19,7 +19,7 @@ fi
 
 RESULTPATH=$1
 # CPU Usage
-echo "CPU Usage  : "`top -n 1 | grep -i cpu\(s\)| awk '{print $8}' | awk '{print 100-$1}'` > $RESULTPATH
+echo "CPU Usage  : "`top -d 0.5 -b -n 3 | grep -i cpu\(s\)| awk '{print $8}' | awk '{printf "%.2f%%\n",100-$1}' | tail -n 1` > $RESULTPATH
 
 #CPU Info
 # CPU 온도

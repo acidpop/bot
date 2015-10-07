@@ -21,6 +21,12 @@ function GetWether(user_id, arg)
 	local n
 	local result = {}
 
+	-- 2015/10/07 argument null check added
+	if ( arg == nil or arg == '' ) then
+		print('get wethere argument is null string, user : ' .. user_id)
+		return
+	end
+
 	n, result = GetQueryResult(query)
 
 	print(type(n))
