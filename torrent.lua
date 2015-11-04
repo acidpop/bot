@@ -102,7 +102,7 @@ function DownloadTorrent(user_id, arg)
         return
     end
 
-	local file_name = string.match(torrent, "[^*]([^/]+)$")
+	local file_name = string.match(torrent_url, "[^*]([^/]+)$")
     print(torrent_title_table[idx])
 	print(torrent_file_table[idx])
     print(file_name)
