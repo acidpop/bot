@@ -8,6 +8,9 @@ You need first rename Directory
 
 	mv acidpop_tgbot/  bot/
 
+# 2015/11/04
+ - torrent.lua 에서 Torrent 파일명 추출 코드 수정
+ - 
 # 2015/10/07
  - 날씨 조회 API 스크립트에서 동네 이름을 입력하지 않으면 스크립트 오류가 나는 문제 수정
 
