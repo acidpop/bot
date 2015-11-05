@@ -2,11 +2,8 @@
 Acidpop Telegram BOT Script
 
 
-	git clone https://github.com/acidpop/acidpop_tgbot.git
+	git clone https://github.com/acidpop/bot.git
 
-You need first rename Directory
-
-	mv acidpop_tgbot/  bot/
 
 # 2015/11/04
  - torrent.lua 에서 Torrent 파일명 추출 코드 수정
