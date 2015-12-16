@@ -14,5 +14,5 @@ SEARCH_KEY=$1
 curl -s -G -L "http://torrentproject.se/" --data-urlencode "s=$SEARCH_KEY" --data-urlencode "out=rss" | xml2 | grep -E 'item/title=|item/enclosure/@url' | cut -f 2 -d '='
 # Torrent Down Search
 # magnet 링크 지원
-curl -s -G -L "http://torrentkim.com/bbs/rss.php" --data-urlencode "k=$SEARCH_KEY" | sed 's/&/&amp;/g' | xml2 | grep -E 'item/title|item/link' | sed 's/\/rss\/channel\/item\/title=//g' | sed 's/\/rss\/channel\/item\/link=//g'
+curl -s -k -G -L "https://torrentkim.com/bbs/rss.php" --data-urlencode "k=$SEARCH_KEY" | sed 's/&/&amp;/g' | xml2 | grep -E 'item/title|item/link' | sed 's/\/rss\/channel\/item\/title=//g' | sed 's/\/rss\/channel\/item\/link=//g'
 
