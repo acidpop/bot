@@ -60,7 +60,7 @@ function SearchTorrent(user_id, arg)
     -- result 문자열은 다음의 형식을 가진다.
     -- torrent 제목 \n
     -- torrent link \n
-	torrent_search_table = string.split_to_table(result, "\n")
+	torrent_search_table = string.split(result, "\n")
 
     -- torrent_search_table 에서 각각 File 이름과 Torrent Link를 추출한다.
 	local title_msg

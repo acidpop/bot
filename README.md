@@ -4,6 +4,9 @@ Acidpop Telegram BOT Script
 
 	git clone https://github.com/acidpop/bot.git
 
+# 2016/01/08
+ - torrent.lua 에서 split_to_table 함수 이름 변경
+
 # 2015/12/16
  - tdget.sh 파일에서 torrent 사이즈 주소 수정
 
