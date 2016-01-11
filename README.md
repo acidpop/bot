@@ -4,6 +4,8 @@ Acidpop Telegram BOT Script
 
 	git clone https://github.com/acidpop/bot.git
 
+# 2016/01/11
+ - url_download 함수 누락된 부분 추가
 # 2016/01/08
  - torrent.lua 에서 split_to_table 함수 이름 변경
 
