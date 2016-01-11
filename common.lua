@@ -196,3 +196,17 @@ function UTF8ToCharArray(str)
     return charArray;
 end
 
+function url_downlaod(localpath, url)
+    local content = socket.http.get(url).readAll()
+    if not content then
+        return nil
+    end
+    file_name = url.split('/')[-1]
+
+    f = fs.open(localpath .. file_name, "w")
+    f.write(content)
+    f.close()
+
+    return file_name
+end
+

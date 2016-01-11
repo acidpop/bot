@@ -9,8 +9,6 @@ torrent_title_table = { }    -- Torrent 검색 목록 테이블에서 제목만 
 torrent_file_table = { }     -- Torrent 검색 목록 테이블에서 File 링크만 추출하여 저장하는테이블 
 
 
-
-
 function AddMagnetLink(user_id, magnetlink)
 	send_msg(user_id, "마그넷 링크 추가를 요청합니다", ok_cb, false)
 
