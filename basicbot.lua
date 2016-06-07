@@ -125,7 +125,7 @@ function on_msg_receive (msg)
     -- 메시지를 전송할 대상을 구분하기 위한 기능.
     -- msg 를 보낸 ID와 로그인한 ID가 동일하다면 BOT에서 사용자에게 보낸 메시지이므로 from을 user_id로 설정
     -- msg 를 보낸 ID와 로그인 ID가 다르다면 BOT이 메시지를 수신 받은 경우이므로 to를 user_id로 설정
-    if (msg.to.id == our_id) then
+    if (msg.to.peer_id == our_id) then
         user_id = msg.from.print_name
     else
         user_id = msg.to.print_name
