@@ -4,8 +4,12 @@ Acidpop Telegram BOT Script
 
 	git clone https://github.com/acidpop/bot.git
 
+# 2016/06/07
+ - Bot Lua 스크립트에서 Telegram CLI 가 업데이트 되면서 msg.to.id 가 msg.to.peer_id 로 변경 된 부분 수정.
+
 # 2016/01/11
  - url_download 함수 누락된 부분 추가
+
 # 2016/01/08
  - torrent.lua 에서 split_to_table 함수 이름 변경
 
