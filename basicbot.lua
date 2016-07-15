@@ -37,6 +37,7 @@ require( "bot/torrent" )     -- Torrent 관련 기능 스크립트
 require( "bot/wol" )         -- WOL 관련 기능 스크립트
 require( "bot/resistorcalc" ) -- 저항 띄 색깔 계산기
 require( "bot/shell" )			-- Shell Mode 스크립트
+require( "bot/power")			--원격 서버 부팅 스크립트
 
 function DefaultMessage(user_id, cmd)
     local msg = '[' .. cmd .. '] 등록 되지 않은 키워드입니다, help 를 입력하세요'
@@ -60,6 +61,8 @@ function msg_processing(user_id, cmd, arg)
     elseif ( cmd == "wol" )         then    WakeOnLan(user_id, arg)           -- WOL 요청
     -- 저항값 계산기
     elseif ( cmd == "저항" )         then    CalcResistorColor(user_id, arg)
+	elseif ( cmd == "상태")			then SendSystemInfo(user_id)
+	elseif ( cmd == "서버" )			then ServerPower(user_id, arg)		--서버 전원 컨트롤
 	elseif ( cmd == "쉘모드" )		then	shell_flag = 1; send_msg(user_id, "쉘모드 활성화", ok_cb, false)
 	elseif ( cmd == "쉘모드종료" )	then	shell_flag = 0; send_msg(user_id, "쉘모드 비활성화", ok_cb, false)
 	elseif ( shell_flag == 1 )		then	print("Shell Mode")
