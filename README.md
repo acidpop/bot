@@ -4,6 +4,12 @@ Acidpop Telegram BOT Script
 
 	git clone https://github.com/acidpop/bot.git
 
+# 2016/07/15
+ - GPIO 0번과 1번에 Relay Switch를 연결하고, 이를 이용하여 원격으로 서버(컴퓨터)를 끄고 켤수 있음
+ (명령어 : 서버 <켜><꺼><상태> 등등..상세 사용방법은 help.txt 참고)
+ - 라즈베리파이의 시스템 상태 체크 기능 복구 (디스크 용량이 정상적으로 뜨지 않던 문제 개선)
+ - 라즈베리파이의 시스템 상태 체크 명령어에서 IP, 로그온 상태 부분 추가
+ 
 # 2016/06/07
  - Bot Lua 스크립트에서 Telegram CLI 가 업데이트 되면서 msg.to.id 가 msg.to.peer_id 로 변경 된 부분 수정.
 
