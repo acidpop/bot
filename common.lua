@@ -5,6 +5,11 @@
 ]]--
 
 
+socket = require("socket")
+http = require("socket.http")
+ltn12 = require("ltn12")
+
+
 -- msg 라는 변수에 어떤 값이 있는지 확인 하기 위해 변수 내부를 출력하는 함수이다.
 function vardump(value, depth, key)
     local linePrefix = ""
@@ -196,17 +201,14 @@ function UTF8ToCharArray(str)
     return charArray;
 end
 
-function url_downlaod(localpath, url)
-    local content = socket.http.get(url).readAll()
-    if not content then
-        return nil
-    end
-    file_name = url.split('/')[-1]
+function url_downlaod(localpath, urlpath)
+	local file_name = urlpath:match( "([^/]+)$" )
+	local file = ltn12.sink.file(io.open(localpath..'/'..file_name, 'w'))
+	http.request {
+		url = urlpath,
+		sink = file,
+	}
 
-    f = fs.open(localpath .. file_name, "w")
-    f.write(content)
-    f.close()
-
-    return file_name
+	return file_name
 end
 
