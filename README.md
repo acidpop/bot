@@ -3,6 +3,11 @@ Acidpop Telegram BOT Script
 
 
 	git clone https://github.com/acidpop/bot.git
+	
+
+
+# 2017/04/24
+ - Telegram CLI Bot은 더이상 업데이트 하지 않습니다.
 
 # 2016/06/07
  - Bot Lua 스크립트에서 Telegram CLI 가 업데이트 되면서 msg.to.id 가 msg.to.peer_id 로 변경 된 부분 수정.
